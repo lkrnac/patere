@@ -92,7 +92,7 @@ public class Patere {
 	 * 
 	 * @return relative path to belonging test resources
 	 */
-	public String getResourcesPathMethod() {
+	public String getResourcesPathForMethod() {
 		final StackTraceElement[] ste = Thread.currentThread().getStackTrace();
 		StackTraceElement stackTraceElement = ste[2];
 		return getResourcesPathForClass(stackTraceElement.getClassName())

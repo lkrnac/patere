@@ -249,7 +249,7 @@ public class PatereTest {
 	}
 
 	/**
-	 * Unit test for {@link Patere#getResourcesPathMethod()}
+	 * Unit test for {@link Patere#getResourcesPathForMethod()}
 	 * <p>
 	 * It uses dummy classes to call testing method, because Patere uses stack
 	 * trace to build test resources path.

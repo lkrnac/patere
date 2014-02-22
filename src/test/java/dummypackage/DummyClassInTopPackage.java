@@ -5,8 +5,8 @@ import net.lkrnac.patere.PatereTest;
 import dummypackage.dummysubpackage.DummyClassInSubPackage;
 
 /**
- * Dummy class used for testing {@link Patere} functionality.
- * Is used by {@link PatereTest} class.
+ * Dummy class used for testing {@link Patere} functionality. Is used by
+ * {@link PatereTest} class.
  * <p>
  * Class contains same code as {@link DummyClassInSubPackage}. It is in purpose,
  * because {@link Patere} is reading from stack trace. So values returned by
@@ -27,7 +27,7 @@ public class DummyClassInTopPackage implements DummyClassMarker {
 	 * {@inheritDoc}
 	 */
 	public String getResourcesPathForMethod(Patere patere) {
-		return patere.getResourcesPathMethod();
+		return patere.getResourcesPathForMethod();
 	}
 
 	@Override
