@@ -1,9 +1,24 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>net.lkrnac</groupId>
+	<groupId>net.lkrnac.patere</groupId>
 	<artifactId>patere</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+
+	<name>Patere</name>
+	<url>https://github.com/lkrnac/patere</url>
+	<scm>
+		<url>https://github.com/lkrnac/patere</url>
+		<developerConnection>Lubos Krnac</developerConnection>
+	</scm>
+	<issueManagement>
+		<url>https://github.com/lkrnac/patere</url>
+		<system>GitHub</system>
+	</issueManagement>
+	<ciManagement>
+		<system>Jenkins</system>
+		<url>https://lkrnac.ci.cloudbees.com/job/patere/</url>
+	</ciManagement>
 
 	<properties>
 		<java.version>1.7</java.version>
@@ -22,6 +37,8 @@
 					<target>${java.version}</target>
 				</configuration>
 			</plugin>
+
+			<!-- Generates test coverage report into "target/site/jacoco" directory -->
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
@@ -64,4 +81,5 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	<description>Tiny tool for building path of test resources based on package, class name and optionaly test method name</description>
 </project>
