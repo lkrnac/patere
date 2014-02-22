@@ -22,13 +22,16 @@ public class Patere {
 			+ File.separator + "resources";
 
 	private String baseTestResourcesPath;
+	private boolean flatPackageRepresentation;
 
 	/**
 	 * Creates Patere utility instance with default test resources path (that is
-	 * Maven default "src/test/resources").
+	 * Maven default "src/test/resources") and uses flat package representation
+	 * (package is represented as one directory with dots -> e.g.
+	 * net.lkrnac.patere)
 	 */
 	public Patere() {
-		this.baseTestResourcesPath = DEFAULT_TEST_RESOURCES_PATH;
+		this(true, DEFAULT_TEST_RESOURCES_PATH);
 	}
 
 	/**
@@ -38,7 +41,41 @@ public class Patere {
 	 *            custom base path for test resources
 	 */
 	public Patere(String baseTestResourcesPath) {
+		this(true, baseTestResourcesPath);
+	}
+
+	/**
+	 * Creates Patere utility instance with given base path and package
+	 * representation flag
+	 * 
+	 * @param flatPackageRepresentation
+	 *            <code>true</code> - flat package representation is used
+	 *            (package is one directory with dots -> e.g.
+	 *            net.lkrnac.patere); <code>false</code> - hierarchical package
+	 *            representation is used (package structure represented as
+	 *            various sub-directories -> e.g. net/lkrnac/patere)
+	 * @param baseTestResourcesPath
+	 *            custom base path for test resources
+	 */
+	public Patere(boolean flatPackageRepresentation, String baseTestResourcesPath) {
 		this.baseTestResourcesPath = StringUtils.removeEnd(baseTestResourcesPath, File.separator);
+		this.flatPackageRepresentation = flatPackageRepresentation;
+
+	}
+
+	/**
+	 * Creates Patere utility instance with default test resources path (that is
+	 * Maven default "src/test/resources") and given package representation flag
+	 * 
+	 * @param flatPackageRepresentation
+	 *            <code>true</code> - flat package representation is used
+	 *            (package is one directory with dots -> e.g.
+	 *            net.lkrnac.patere); <code>false</code> - hierarchical package
+	 *            representation is used (package structure represented as
+	 *            various sub-directories -> e.g. net/lkrnac/patere)
+	 */
+	public Patere(boolean flatPackageRepresentation) {
+		this(flatPackageRepresentation, DEFAULT_TEST_RESOURCES_PATH);
 	}
 
 	/**
@@ -74,18 +111,25 @@ public class Patere {
 	 * @return relative path to belonging test resources
 	 */
 	public String getResourcesPathForClass(String fullClassName) {
-		StringBuilder stringBuilder = new StringBuilder();
+		StringBuilder pathBuilder = new StringBuilder();
 
 		//@formatter:off
-		stringBuilder
+		pathBuilder
 			.append(baseTestResourcesPath)
 			.append(File.separator)
 			.append(fullClassName);
 		//@formatter:on
 
-		int lastIndexOf = stringBuilder.lastIndexOf(".");
-		stringBuilder.replace(lastIndexOf, lastIndexOf + 1, File.separator);
-		stringBuilder.append(File.separator);
-		return stringBuilder.toString();
+		int lastIndexOf = pathBuilder.lastIndexOf(".");
+
+		//update path based on desired package representation
+		if (flatPackageRepresentation) {
+			pathBuilder.replace(lastIndexOf, lastIndexOf + 1, File.separator);
+		} else {
+			String tmpPath = StringUtils.replace(pathBuilder.toString(), ".", File.separator);
+			pathBuilder = new StringBuilder(tmpPath);
+		}
+		pathBuilder.append(File.separator);
+		return pathBuilder.toString();
 	}
 }

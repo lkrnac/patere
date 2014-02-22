@@ -10,6 +10,7 @@ import org.testng.annotations.Test;
 import dummypackage.DummyClassInTopPackage;
 import dummypackage.DummyClassMarker;
 import dummypackage.dummysubpackage.DummyClassInSubPackage;
+import dummypackage.dummysubpackage.dummysubpackage.DummyClassInDeeperSubPackage;
 
 /**
  * Unit tests for {@link Patere}
@@ -38,52 +39,211 @@ public class PatereTest {
 	 */
 	@DataProvider
 	public final Object[][] testCases() {
-		int testCaseIndex = 1;
 		//@formatter:off
 		return new Object[][] { 
-				{ //default configuration with top level package
-					testCaseIndex++,
-					new DummyClassInTopPackage(),
-					new Patere(),
-					new String[] { "src", "test", "resources", "dummypackage",
-							"DummyClassInTopPackage", "getResourcesPathForMethod" } 
-				}, 
-				{ //default configuration with sub-packages
-					testCaseIndex++,
-					new DummyClassInSubPackage(),
-					new Patere(),
-					new String[] { "src", "test", "resources", "dummypackage.dummysubpackage",
-							"DummyClassInSubPackage", "getResourcesPathForMethod" } 
-				}, 
-				{ //custom base path with top level package
-					testCaseIndex++,
-					new DummyClassInTopPackage(),
-					new Patere(DUMMY_CUSTOM_TEST_RESOURCES_PATH),
-					new String[] { DUMMY_CUSTOM_TEST_RESOURCES_PATH, "dummypackage",
-							"DummyClassInTopPackage", "getResourcesPathForMethod" } 
-				}, 
-				{ //custom base path with sub-packages
-					testCaseIndex++,
-					new DummyClassInSubPackage(),
-					new Patere(DUMMY_CUSTOM_TEST_RESOURCES_PATH),
-					new String[] { DUMMY_CUSTOM_TEST_RESOURCES_PATH,
-							"dummypackage.dummysubpackage", "DummyClassInSubPackage",
-							"getResourcesPathForMethod" } 
-				}, 
-				{ //custom base path with top level package + removing file separator from custom base path
-					testCaseIndex++,
-					new DummyClassInTopPackage(),
-					new Patere(DUMMY_CUSTOM_TEST_RESOURCES_PATH + File.separator),
-					new String[] { DUMMY_CUSTOM_TEST_RESOURCES_PATH, "dummypackage",
-							"DummyClassInTopPackage", "getResourcesPathForMethod" } 
-				}, 
-				{ //custom base path with sub-packages + removing file separator from custom base path
-					testCaseIndex++,
-					new DummyClassInSubPackage(),
-					new Patere(DUMMY_CUSTOM_TEST_RESOURCES_PATH + File.separator),
-					new String[] {DUMMY_CUSTOM_TEST_RESOURCES_PATH, "dummypackage.dummysubpackage",
-							"DummyClassInSubPackage", "getResourcesPathForMethod" }
-				},
+			{ //default configuration, test uses top level package
+				0, 
+				new DummyClassInTopPackage(),
+				new Patere(),
+				new String[] { "src", "test", "resources", "dummypackage",
+						"DummyClassInTopPackage", "getResourcesPathForMethod" } 
+			}, 
+			{ //default configuration, test uses sub-packages
+				1,
+				new DummyClassInSubPackage(),
+				new Patere(),
+				new String[] { "src", "test", "resources", "dummypackage.dummysubpackage",
+						"DummyClassInSubPackage", "getResourcesPathForMethod" } 
+			}, 
+			{ //default configuration, test uses sub-packages
+				2,
+				new DummyClassInDeeperSubPackage(),
+				new Patere(),
+				new String[] { "src", "test", "resources", "dummypackage.dummysubpackage.dummysubpackage",
+						"DummyClassInDeeperSubPackage", "getResourcesPathForMethod" } 
+			}, 
+			{ //custom base path, test uses top level package
+				10,
+				new DummyClassInTopPackage(),
+				new Patere(DUMMY_CUSTOM_TEST_RESOURCES_PATH),
+				new String[] { DUMMY_CUSTOM_TEST_RESOURCES_PATH, "dummypackage",
+						"DummyClassInTopPackage", "getResourcesPathForMethod" } 
+			}, 
+			{ //custom base path, test uses sub-packages
+				11,
+				new DummyClassInSubPackage(),
+				new Patere(DUMMY_CUSTOM_TEST_RESOURCES_PATH),
+				new String[] { DUMMY_CUSTOM_TEST_RESOURCES_PATH,
+						"dummypackage.dummysubpackage", "DummyClassInSubPackage",
+						"getResourcesPathForMethod" } 
+			}, 
+			{ //custom base path, test uses sub-packages
+				12,
+				new DummyClassInDeeperSubPackage(),
+				new Patere(DUMMY_CUSTOM_TEST_RESOURCES_PATH),
+				new String[] { DUMMY_CUSTOM_TEST_RESOURCES_PATH,
+						"dummypackage.dummysubpackage.dummysubpackage", "DummyClassInDeeperSubPackage",
+						"getResourcesPathForMethod" } 
+			},				
+			{ //custom base path, test uses top level package + removing file separator from custom base path
+				20,
+				new DummyClassInTopPackage(),
+				new Patere(DUMMY_CUSTOM_TEST_RESOURCES_PATH + File.separator),
+				new String[] { DUMMY_CUSTOM_TEST_RESOURCES_PATH, "dummypackage",
+						"DummyClassInTopPackage", "getResourcesPathForMethod" } 
+			}, 
+			{ //custom base path, test uses sub-packages + removing file separator from custom base path
+				21,
+				new DummyClassInSubPackage(),
+				new Patere(DUMMY_CUSTOM_TEST_RESOURCES_PATH + File.separator),
+				new String[] {DUMMY_CUSTOM_TEST_RESOURCES_PATH, "dummypackage.dummysubpackage",
+						"DummyClassInSubPackage", "getResourcesPathForMethod" }
+			},
+			{ //custom base path, test uses sub-packages + removing file separator from custom base path
+				22,
+				new DummyClassInDeeperSubPackage(),
+				new Patere(DUMMY_CUSTOM_TEST_RESOURCES_PATH + File.separator),
+				new String[] {DUMMY_CUSTOM_TEST_RESOURCES_PATH, 
+						"dummypackage.dummysubpackage.dummysubpackage",
+						"DummyClassInDeeperSubPackage", "getResourcesPathForMethod" }
+			},
+			{ //Flat package representation, default base path, test uses top level package
+				30,
+				new DummyClassInTopPackage(),
+				new Patere(true),
+				new String[] { "src", "test", "resources", "dummypackage",
+						"DummyClassInTopPackage", "getResourcesPathForMethod" } 
+			}, 
+			{ //Flat package representation, default base path, test uses sub-packages
+				31,
+				new DummyClassInSubPackage(),
+				new Patere(true),
+				new String[] { "src", "test", "resources", "dummypackage.dummysubpackage",
+						"DummyClassInSubPackage", "getResourcesPathForMethod" } 
+			}, 
+			{ //Flat package representation, default base path, test uses sub-packages
+				32,
+				new DummyClassInDeeperSubPackage(),
+				new Patere(true),
+				new String[] { "src", "test", "resources", "dummypackage.dummysubpackage.dummysubpackage",
+						"DummyClassInDeeperSubPackage", "getResourcesPathForMethod" } 
+			}, 
+			{ //Flat package representation, custom base path, test uses top level package
+				40,
+				new DummyClassInTopPackage(),
+				new Patere(true, DUMMY_CUSTOM_TEST_RESOURCES_PATH),
+				new String[] { DUMMY_CUSTOM_TEST_RESOURCES_PATH, "dummypackage",
+						"DummyClassInTopPackage", "getResourcesPathForMethod" } 
+			}, 
+			{ //Flat package representation, custom base path, test uses sub-packages
+				41,
+				new DummyClassInSubPackage(),
+				new Patere(true, DUMMY_CUSTOM_TEST_RESOURCES_PATH),
+				new String[] { DUMMY_CUSTOM_TEST_RESOURCES_PATH,
+						"dummypackage.dummysubpackage", "DummyClassInSubPackage",
+						"getResourcesPathForMethod" } 
+			}, 
+			{ //Flat package representation, custom base path, test uses sub-packages
+				42,
+				new DummyClassInDeeperSubPackage(),
+				new Patere(true, DUMMY_CUSTOM_TEST_RESOURCES_PATH),
+				new String[] { DUMMY_CUSTOM_TEST_RESOURCES_PATH,
+						"dummypackage.dummysubpackage.dummysubpackage", "DummyClassInDeeperSubPackage",
+						"getResourcesPathForMethod" } 
+			}, 
+			{ //Flat package representation, custom base path, test uses top level package
+			  //+ removing file separator from custom base path
+				50,
+				new DummyClassInTopPackage(),
+				new Patere(true, DUMMY_CUSTOM_TEST_RESOURCES_PATH + File.separator),
+				new String[] { DUMMY_CUSTOM_TEST_RESOURCES_PATH, "dummypackage",
+						"DummyClassInTopPackage", "getResourcesPathForMethod" } 
+			}, 
+			{ //Flat package representation, custom base path, test uses sub-packages
+			  //+ removing file separator from custom base path
+				51,
+				new DummyClassInSubPackage(),
+				new Patere(true, DUMMY_CUSTOM_TEST_RESOURCES_PATH + File.separator),
+				new String[] {DUMMY_CUSTOM_TEST_RESOURCES_PATH, "dummypackage.dummysubpackage",
+						"DummyClassInSubPackage", "getResourcesPathForMethod" }
+			},
+			{ //Flat package representation, custom base path, test uses sub-packages
+			  //+ removing file separator from custom base path
+				52,
+				new DummyClassInDeeperSubPackage(),
+				new Patere(true, DUMMY_CUSTOM_TEST_RESOURCES_PATH + File.separator),
+				new String[] {DUMMY_CUSTOM_TEST_RESOURCES_PATH, 
+						"dummypackage.dummysubpackage.dummysubpackage",
+						"DummyClassInDeeperSubPackage", "getResourcesPathForMethod" }
+			},
+			{ //Hierarchical package representation, default base path, test uses top level package
+				60,
+				new DummyClassInTopPackage(),
+				new Patere(false),
+				new String[] { "src", "test", "resources", "dummypackage",
+						"DummyClassInTopPackage", "getResourcesPathForMethod" } 
+			}, 
+			{ //Hierarchical package representation, default base path, test uses sub-packages
+				61,
+				new DummyClassInSubPackage(),
+				new Patere(false),
+				new String[] { "src", "test", "resources", "dummypackage", "dummysubpackage",
+						"DummyClassInSubPackage", "getResourcesPathForMethod" } 
+			}, 
+			{ //Hierarchical package representation, default base path, test uses sub-packages
+				62,
+				new DummyClassInDeeperSubPackage(),
+				new Patere(false),
+				new String[] { "src", "test", "resources", "dummypackage", "dummysubpackage",
+					"dummysubpackage", "DummyClassInDeeperSubPackage", "getResourcesPathForMethod" } 
+			}, 
+			{ //Hierarchical package representation, custom base path, test uses top level package
+				70,
+				new DummyClassInTopPackage(),
+				new Patere(false, DUMMY_CUSTOM_TEST_RESOURCES_PATH),
+				new String[] { DUMMY_CUSTOM_TEST_RESOURCES_PATH, "dummypackage",
+						"DummyClassInTopPackage", "getResourcesPathForMethod" } 
+			}, 
+			{ //Hierarchical package representation, custom base path, test uses sub-packages
+				71,
+				new DummyClassInSubPackage(),
+				new Patere(false, DUMMY_CUSTOM_TEST_RESOURCES_PATH),
+				new String[] { DUMMY_CUSTOM_TEST_RESOURCES_PATH,
+						"dummypackage", "dummysubpackage", "DummyClassInSubPackage",
+						"getResourcesPathForMethod" } 
+			}, 
+			{ //Hierarchical package representation, custom base path, test uses sub-packages
+				72,
+				new DummyClassInDeeperSubPackage(),
+				new Patere(false, DUMMY_CUSTOM_TEST_RESOURCES_PATH),
+				new String[] { DUMMY_CUSTOM_TEST_RESOURCES_PATH, "dummypackage", 
+						"dummysubpackage", "dummysubpackage", "DummyClassInDeeperSubPackage",
+						"getResourcesPathForMethod" } 
+			}, 
+			{ //Hierarchical package representation, custom base path, test uses top level package
+			  //+ removing file separator from custom base path
+				80,
+				new DummyClassInTopPackage(),
+				new Patere(false, DUMMY_CUSTOM_TEST_RESOURCES_PATH + File.separator),
+				new String[] { DUMMY_CUSTOM_TEST_RESOURCES_PATH, "dummypackage",
+						"DummyClassInTopPackage", "getResourcesPathForMethod" } 
+			}, 
+			{ //Hierarchical package representation, custom base path, test uses sub-packages
+			  //+ removing file separator from custom base path
+				81,
+				new DummyClassInSubPackage(),
+				new Patere(false, DUMMY_CUSTOM_TEST_RESOURCES_PATH + File.separator),
+				new String[] {DUMMY_CUSTOM_TEST_RESOURCES_PATH, "dummypackage", "dummysubpackage",
+						"DummyClassInSubPackage", "getResourcesPathForMethod" }
+			},
+			{ //Hierarchical package representation, custom base path, test uses sub-packages
+			  //+ removing file separator from custom base path
+				82,
+				new DummyClassInDeeperSubPackage(),
+				new Patere(false, DUMMY_CUSTOM_TEST_RESOURCES_PATH + File.separator),
+				new String[] {DUMMY_CUSTOM_TEST_RESOURCES_PATH, "dummypackage", "dummysubpackage",
+					"dummysubpackage", "DummyClassInDeeperSubPackage", "getResourcesPathForMethod" }
+			},
 		};
 		//@formatter:on
 	}

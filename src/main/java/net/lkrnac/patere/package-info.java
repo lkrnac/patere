@@ -1,5 +1,5 @@
 /**
- * Main (and the only one :) package of Patere utility
+ * Main package of Patere utility
  * 
  * @author lubos krnac
  */
