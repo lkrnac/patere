@@ -5,7 +5,7 @@ Tiny library for building path of test resources based on package, class name an
 
 Examples:
 Call from <code>net.lkrnac.someapp.AppTest.testSomeMethod()</code>
-'''java
+```java
 String testResourcesPath = new Patere().getResourcesPathForMethod(); 
 //testResourcesPath -> "src/test/resources/net.lkrnac.someapp/AppTest/testSomeMethod/"
 testResourcesPath = new Patere(false).getResourcesPathForMethod(); 
@@ -16,4 +16,4 @@ testResourcesPath = new Patere(false).getResourcesPathForClass(this.getClass.get
 //testResourcesPath -> "src/test/resources/net/lkrnac/someapp/AppTest/"
 testResourcesPath = new Patere("test").getResourcesPathForClass(this.getClass.getName()); 
 //testResourcesPath -> "test/net/lkrnac/someapp/AppTest/"
-'''
+```
