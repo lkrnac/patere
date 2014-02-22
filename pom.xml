@@ -13,12 +13,12 @@
 	</scm>
 	<issueManagement>
 		<url>https://github.com/lkrnac/patere</url>
-		<system>GitHub</system>
 	</issueManagement>
 	<ciManagement>
 		<system>Jenkins</system>
 		<url>https://lkrnac.ci.cloudbees.com/job/patere/</url>
 	</ciManagement>
+	<description>https://github.com/lkrnac/patere</description>
 
 	<properties>
 		<java.version>1.7</java.version>
@@ -81,5 +81,4 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-	<description>Tiny tool for building path of test resources based on package, class name and optionaly test method name</description>
 </project>
