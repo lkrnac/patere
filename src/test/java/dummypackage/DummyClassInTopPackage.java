@@ -1,0 +1,37 @@
+package dummypackage;
+
+import net.lkrnac.patere.Patere;
+import net.lkrnac.patere.PatereTest;
+import dummypackage.dummysubpackage.DummyClassInSubPackage;
+
+/**
+ * Dummy class used for testing {@link Patere} functionality.
+ * Is used by {@link PatereTest} class.
+ * <p>
+ * Class contains same code as {@link DummyClassInSubPackage}. It is in purpose,
+ * because {@link Patere} is reading from stack trace. So values returned by
+ * methods here will be different to {@link DummyClassInSubPackage} return
+ * values.
+ * 
+ * @author lubos krnac
+ */
+public class DummyClassInTopPackage implements DummyClassMarker {
+	/**
+	 * {@inheritDoc}
+	 */
+	public String getResourcesPathForClass(Patere patere) {
+		return patere.getResourcesPathForClass(this.getClass().getName());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public String getResourcesPathForMethod(Patere patere) {
+		return patere.getResourcesPathMethod();
+	}
+
+	@Override
+	public String toString() {
+		return this.getClass().getSimpleName();
+	}
+}
