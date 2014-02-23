@@ -29,3 +29,4 @@ testResourcesPath = new Patere("test").getResourcesPathForClass(this.getClass.ge
 * Project page / source code repository: https://github.com/lkrnac/patere
 * Continuous integration: https://lkrnac.ci.cloudbees.com/job/patere/ 
 * Test coverage: https://lkrnac.ci.cloudbees.com/job/patere/ws/target/site/jacoco/index.html
+* Issue tracking: https://github.com/lkrnac/patere/issues
