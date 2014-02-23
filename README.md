@@ -1,5 +1,10 @@
 # Patere
 Tiny library for building path of test resources based on package, class name and optionally test method name.
+This can help keep test suite organized if it heavily uses some file resources. 
+Developer can just drop resources belonging to the test into directory of certain structure and
+use Patere in test to build the test resources path.  
+
+It uses stack trace of current thread to build the path, ''therefore it's not suitable for production''. 
 
 ## Examples
 Call from <code>net.lkrnac.someapp.AppTest.testSomeMethod()</code> 
