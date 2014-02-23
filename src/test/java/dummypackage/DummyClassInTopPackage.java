@@ -1,9 +1,11 @@
 package dummypackage;
 
+//CHECKSTYLE:OFF
 import net.lkrnac.patere.Patere;
 import net.lkrnac.patere.PatereTest;
 import dummypackage.dummysubpackage.DummyClassInSubPackage;
 
+//CHECKSTYLE:ON
 /**
  * Dummy class used for testing {@link Patere} functionality. Is used by
  * {@link PatereTest} class.

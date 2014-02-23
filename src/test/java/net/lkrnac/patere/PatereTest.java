@@ -1,9 +1,11 @@
+//SUPPRESS CHECKSTYLE JavadocPackage -5 adcsc
 package net.lkrnac.patere;
 
 import java.io.File;
 
 import junit.framework.Assert;
 
+import org.apache.commons.lang3.StringUtils;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -13,7 +15,7 @@ import dummypackage.dummysubpackage.DummyClassInSubPackage;
 import dummypackage.dummysubpackage.dummysubpackage.DummyClassInDeeperSubPackage;
 
 /**
- * Unit tests for {@link Patere}
+ * Unit tests for {@link Patere}.
  * 
  * @author lubos krnac
  */
@@ -37,6 +39,11 @@ public class PatereTest {
 	 * 
 	 * @return test cases
 	 */
+	//NOPMD: 
+	//Duplicate literals: I think string literals are better readable in in this case.
+	//Long method: Data provider specifies a lot of test cases.
+	//CHECKSTYLE:OFF
+	@SuppressWarnings({ "PMD.AvoidDuplicateLiterals", "PMD.ExcessiveMethodLength" })
 	@DataProvider
 	public final Object[][] testCases() {
 		//@formatter:off
@@ -248,6 +255,8 @@ public class PatereTest {
 		//@formatter:on
 	}
 
+	//CHECKSTYLE:ON
+
 	/**
 	 * Unit test for {@link Patere#getResourcesPathForMethod()}
 	 * <p>
@@ -303,7 +312,7 @@ public class PatereTest {
 	}
 
 	/**
-	 * Builds path string out of given array of directories
+	 * Builds path string out of given array of directories.
 	 * 
 	 * @param directoriesArray
 	 *            array of directories
@@ -318,16 +327,15 @@ public class PatereTest {
 	private String buildPathString(String[] directoriesArray, boolean ignoreLastDirectory) {
 		//blank last directory from path if needed
 		if (ignoreLastDirectory) {
-			directoriesArray[directoriesArray.length - 1] = null;
+			directoriesArray[directoriesArray.length - 1] = "";
 		}
 
 		StringBuilder expectedPath = new StringBuilder();
 		for (String directory : directoriesArray) {
-			if (directory != null) {
+			if (!StringUtils.isBlank(directory)) {
 				expectedPath.append(directory).append(File.separator);
 			}
 		}
-		String expectedPathString = expectedPath.toString();
-		return expectedPathString;
+		return expectedPath.toString();
 	}
 }

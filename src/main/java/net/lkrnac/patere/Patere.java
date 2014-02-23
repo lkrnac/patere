@@ -46,7 +46,7 @@ public class Patere {
 
 	/**
 	 * Creates Patere utility instance with given base path and package
-	 * representation flag
+	 * representation flag.
 	 * 
 	 * @param flatPackageRepresentation
 	 *            <code>true</code> - flat package representation is used
@@ -65,7 +65,8 @@ public class Patere {
 
 	/**
 	 * Creates Patere utility instance with default test resources path (that is
-	 * Maven default "src/test/resources") and given package representation flag
+	 * Maven default "src/test/resources") and given package representation
+	 * flag.
 	 * 
 	 * @param flatPackageRepresentation
 	 *            <code>true</code> - flat package representation is used

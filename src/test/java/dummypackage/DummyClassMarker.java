@@ -1,7 +1,10 @@
 package dummypackage;
 
+//CHECKSTYLE:OFF
 import net.lkrnac.patere.Patere;
 import net.lkrnac.patere.PatereTest;
+
+//CHECKSTYLE:ON
 
 /**
  * Marker interface for dummy classes used for testing {@link Patere}
@@ -15,12 +18,12 @@ public interface DummyClassMarker {
 	 *            testing {@link Patere} instance
 	 * @return Path of test resources for class when default base path is used
 	 */
-	public String getResourcesPathForClass(Patere patere);
+	String getResourcesPathForClass(Patere patere);
 
 	/**
 	 * @param patere
 	 *            testing {@link Patere} instance
 	 * @return Path of test resources for class when default base path is used
 	 */
-	public String getResourcesPathForMethod(Patere patere);
+	String getResourcesPathForMethod(Patere patere);
 }
