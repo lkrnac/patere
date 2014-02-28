@@ -9,7 +9,8 @@
 	<url>https://github.com/lkrnac/patere</url>
 	<scm>
 		<url>https://github.com/lkrnac/patere</url>
-		<developerConnection>Lubos Krnac</developerConnection>
+		<connection>scm:git:https://github.com/lkrnac/patere</connection>
+		<developerConnection>scm:git:https://github.com/lkrnac/patere</developerConnection>
 	</scm>
 	<issueManagement>
 		<url>https://github.com/lkrnac/patere</url>
@@ -74,8 +75,9 @@
 			</plugin>
 
 		</plugins>
-		
-		<!-- remove M2E warning complaining about usage of maven-enforcer-plugin in parent -->
+
+		<!-- remove M2E warning complaining about usage of maven-enforcer-plugin 
+			in parent -->
 		<pluginManagement>
 			<plugins>
 				<plugin>
