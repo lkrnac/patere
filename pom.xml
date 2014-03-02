@@ -38,6 +38,7 @@
 	<properties>
 		<java.version>1.7</java.version>
 		<jacoco.version>0.6.4.201312101107</jacoco.version>
+		<arguments>-e</arguments>
 	</properties>
 
 	<build>
