@@ -8,9 +8,9 @@
 	<name>Patere</name>
 	<url>https://github.com/lkrnac/patere</url>
 	<scm>
-		<url>https://github.com/lkrnac/patere</url>
-		<connection>scm:git:https://github.com/lkrnac/patere</connection>
-		<developerConnection>scm:git:https://github.com/lkrnac/patere</developerConnection>
+		<url>scm:git:git@github.com:lkrnac/patere.git</url>
+		<connection>scm:git:git@github.com:lkrnac/patere.git</connection>
+		<developerConnection>scm:git:git@github.com:lkrnac/patere.git</developerConnection>
 	</scm>
 	<issueManagement>
 		<url>https://github.com/lkrnac/patere</url>
