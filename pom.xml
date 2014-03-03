@@ -8,7 +8,7 @@
 	<name>Patere</name>
 	<url>https://github.com/lkrnac/patere</url>
 	<scm>
-		<url>git@github.com:lkrnac/patere.git</url>
+		<url>scm:git:git@github.com:lkrnac/patere.git</url>
 		<connection>scm:git:git@github.com:lkrnac/patere.git</connection>
 		<developerConnection>scm:git:git@github.com:lkrnac/patere.git</developerConnection>
 	</scm>
