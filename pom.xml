@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.lkrnac.libs</groupId>
 	<artifactId>patere</artifactId>
-	<version>0.2.3-SNAPSHOT</version>
+	<version>0.2.3</version>
 
 	<name>Patere</name>
 	<url>https://github.com/lkrnac/patere</url>
@@ -10,7 +10,7 @@
 		<url>https://github.com/lkrnac/patere</url>
 		<connection>scm:git:git@github.com:lkrnac/patere.git</connection>
 		<developerConnection>scm:git:git@github.com:lkrnac/patere.git</developerConnection>
-	  <tag>HEAD</tag>
+	  <tag>patere-0.2.3</tag>
   </scm>
 	<issueManagement>
 		<url>https://github.com/lkrnac/patere</url>
