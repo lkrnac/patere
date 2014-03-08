@@ -22,8 +22,9 @@ Find version in GitHub releases tab.
 JavaDoc of current development branch:
 https://lkrnac.ci.cloudbees.com/job/patere/ws/target/site/apidocs/index.html
 
-## Examples
-Call from <code>net.lkrnac.someapp.AppTest.testSomeMethod()</code> 
+## Examples 
+If stack trace is <code>net.lkrnac.someapp.AppTest.testSomeMethod()</code>,
+Patere builds following test resource paths:  
 ```java
 String testResourcesPath = new Patere().getResourcesPathForMethod(); 
 //testResourcesPath == "src/test/resources/net.lkrnac.someapp/AppTest/testSomeMethod/"
