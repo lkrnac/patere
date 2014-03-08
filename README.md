@@ -5,6 +5,7 @@ Developer can just drop resources belonging to the test into directory of certai
 use Patere in test to build the test resources path.  
 
 It uses stack trace of current thread to build the path, **therefore it's not suitable for production**. 
+
 Uses Java 7.
 
 ## Maven dependency
@@ -16,11 +17,10 @@ Uses Java 7.
 	<scope>test</scope>
 </dependency>
 ```
-Find version in GitHub releases tab.
+Find version in [GitHub releases tab](https://github.com/lkrnac/patere/releases).
 
 ## API
-JavaDoc of current development branch:
-https://lkrnac.ci.cloudbees.com/job/patere/ws/target/site/apidocs/index.html
+[JavaDoc of current development branch](https://lkrnac.ci.cloudbees.com/job/patere/ws/target/site/apidocs/index.html)
 
 ## Examples 
 If stack trace is <code>net.lkrnac.someapp.AppTest.testSomeMethod()</code>,
@@ -43,7 +43,7 @@ testResourcesPath = new Patere("test").getResourcesPathForClass(this.getClass.ge
 ```
 
 ##Development
-* Project page / source code repository: https://github.com/lkrnac/patere
-* Continuous integration: https://lkrnac.ci.cloudbees.com/job/patere/ 
-* Test coverage: https://lkrnac.ci.cloudbees.com/job/patere/ws/target/site/jacoco/index.html
-* Issue tracking: https://github.com/lkrnac/patere/issues
+* [Project page / source code repository](https://github.com/lkrnac/patere)
+* [Continuous integration](https://lkrnac.ci.cloudbees.com/job/patere) 
+* [Test coverage](https://lkrnac.ci.cloudbees.com/job/patere/ws/target/site/jacoco/index.html)
+* [Issue tracking](https://github.com/lkrnac/patere/issues)
