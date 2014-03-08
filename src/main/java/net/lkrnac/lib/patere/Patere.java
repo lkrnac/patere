@@ -1,6 +1,6 @@
 package net.lkrnac.lib.patere;
 
-import java.io.File;
+import java.nio.file.FileSystems;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -14,12 +14,14 @@ import org.apache.commons.lang3.StringUtils;
  * @author lubos krnac
  */
 public class Patere {
+	private static final String SEPARATOR = FileSystems.getDefault().getSeparator();
+
 	/**
 	 * Default base path for test resources. Maven default test resources
 	 * relative path is used: 'src/test/resources'.
 	 */
-	private static final String DEFAULT_TEST_RESOURCES_PATH = "src" + File.separator + "test"
-			+ File.separator + "resources";
+	private static final String DEFAULT_TEST_RESOURCES_PATH = "src" + SEPARATOR + "test"
+			+ SEPARATOR + "resources";
 
 	private String baseTestResourcesPath;
 	private boolean flatPackageRepresentation;
@@ -60,7 +62,7 @@ public class Patere {
 	 *            custom base path for test resources
 	 */
 	public Patere(boolean flatPackageRepresentation, String baseTestResourcesPath) {
-		this.baseTestResourcesPath = StringUtils.removeEnd(baseTestResourcesPath, File.separator);
+		this.baseTestResourcesPath = StringUtils.removeEnd(baseTestResourcesPath, SEPARATOR);
 		this.flatPackageRepresentation = flatPackageRepresentation;
 
 	}
@@ -91,7 +93,7 @@ public class Patere {
 	 * Desired path would be [base_test_resources_path]
 	 * /[test_package]/[test_class]/[test_method]
 	 * <p>
-	 * Uses File.separator constant so it is platform independent.
+	 * Uses SEPARATOR constant so it is platform independent.
 	 * 
 	 * @return relative path to belonging test resources
 	 */
@@ -99,7 +101,7 @@ public class Patere {
 		final StackTraceElement[] ste = Thread.currentThread().getStackTrace();
 		StackTraceElement stackTraceElement = ste[2];
 		return getResourcesPathForClass(stackTraceElement.getClassName())
-				+ stackTraceElement.getMethodName() + File.separator;
+				+ stackTraceElement.getMethodName() + SEPARATOR;
 	}
 
 	/**
@@ -119,7 +121,7 @@ public class Patere {
 		//@formatter:off
 		pathBuilder
 			.append(baseTestResourcesPath)
-			.append(File.separator)
+			.append(SEPARATOR)
 			.append(fullClassName);
 		//@formatter:on
 
@@ -127,12 +129,12 @@ public class Patere {
 
 		//update path based on desired package representation
 		if (flatPackageRepresentation) {
-			pathBuilder.replace(lastIndexOf, lastIndexOf + 1, File.separator);
+			pathBuilder.replace(lastIndexOf, lastIndexOf + 1, SEPARATOR);
 		} else {
-			String tmpPath = StringUtils.replace(pathBuilder.toString(), ".", File.separator);
+			String tmpPath = StringUtils.replace(pathBuilder.toString(), ".", SEPARATOR);
 			pathBuilder = new StringBuilder(tmpPath);
 		}
-		pathBuilder.append(File.separator);
+		pathBuilder.append(SEPARATOR);
 		return pathBuilder.toString();
 	}
 }

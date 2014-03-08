@@ -1,6 +1,7 @@
 package net.lkrnac.lib.patere;
 
-import java.io.File;
+import java.nio.file.FileSystem;
+import java.nio.file.FileSystems;
 
 import junit.framework.Assert;
 
@@ -19,6 +20,7 @@ import dummypackage.dummysubpackage.dummysubpackage.DummyClassInDeeperSubPackage
  * @author lubos krnac
  */
 public class PatereTest {
+	private static final String SEPARATOR = FileSystems.getDefault().getSeparator();
 	private static final String TEST_CASES_PROVIDER = "testCases";
 	private static final String DUMMY_CUSTOM_TEST_RESOURCES_PATH = "dummyCustomTestResourcesPath";
 
@@ -30,8 +32,9 @@ public class PatereTest {
 	 * .
 	 * <p>
 	 * Expected value in data provider is specified as array of String, because
-	 * test needs to use {@link File#separator} between each directory level (to
-	 * be platform independent) and this array seem to be easier to read.
+	 * test needs to use {@link FileSystem#getSeparator()} between each
+	 * directory level (to be platform independent) and this array seem to be
+	 * easier to read.
 	 * <p>
 	 * {@link PatereTest#testGetResourcesPathForClass(int, DummyClassMarker, Patere, String[])}
 	 * doesn't use last element from expected path array.
@@ -94,21 +97,21 @@ public class PatereTest {
 			{ //custom base path, test uses top level package + removing file separator from custom base path
 				20,
 				new DummyClassInTopPackage(),
-				new Patere(DUMMY_CUSTOM_TEST_RESOURCES_PATH + File.separator),
+				new Patere(DUMMY_CUSTOM_TEST_RESOURCES_PATH + SEPARATOR),
 				new String[] { DUMMY_CUSTOM_TEST_RESOURCES_PATH, "dummypackage",
 						"DummyClassInTopPackage", "getResourcesPathForMethod" } 
 			}, 
 			{ //custom base path, test uses sub-packages + removing file separator from custom base path
 				21,
 				new DummyClassInSubPackage(),
-				new Patere(DUMMY_CUSTOM_TEST_RESOURCES_PATH + File.separator),
+				new Patere(DUMMY_CUSTOM_TEST_RESOURCES_PATH + SEPARATOR),
 				new String[] {DUMMY_CUSTOM_TEST_RESOURCES_PATH, "dummypackage.dummysubpackage",
 						"DummyClassInSubPackage", "getResourcesPathForMethod" }
 			},
 			{ //custom base path, test uses sub-packages + removing file separator from custom base path
 				22,
 				new DummyClassInDeeperSubPackage(),
-				new Patere(DUMMY_CUSTOM_TEST_RESOURCES_PATH + File.separator),
+				new Patere(DUMMY_CUSTOM_TEST_RESOURCES_PATH + SEPARATOR),
 				new String[] {DUMMY_CUSTOM_TEST_RESOURCES_PATH, 
 						"dummypackage.dummysubpackage.dummysubpackage",
 						"DummyClassInDeeperSubPackage", "getResourcesPathForMethod" }
@@ -161,7 +164,7 @@ public class PatereTest {
 			  //+ removing file separator from custom base path
 				50,
 				new DummyClassInTopPackage(),
-				new Patere(true, DUMMY_CUSTOM_TEST_RESOURCES_PATH + File.separator),
+				new Patere(true, DUMMY_CUSTOM_TEST_RESOURCES_PATH + SEPARATOR),
 				new String[] { DUMMY_CUSTOM_TEST_RESOURCES_PATH, "dummypackage",
 						"DummyClassInTopPackage", "getResourcesPathForMethod" } 
 			}, 
@@ -169,7 +172,7 @@ public class PatereTest {
 			  //+ removing file separator from custom base path
 				51,
 				new DummyClassInSubPackage(),
-				new Patere(true, DUMMY_CUSTOM_TEST_RESOURCES_PATH + File.separator),
+				new Patere(true, DUMMY_CUSTOM_TEST_RESOURCES_PATH + SEPARATOR),
 				new String[] {DUMMY_CUSTOM_TEST_RESOURCES_PATH, "dummypackage.dummysubpackage",
 						"DummyClassInSubPackage", "getResourcesPathForMethod" }
 			},
@@ -177,7 +180,7 @@ public class PatereTest {
 			  //+ removing file separator from custom base path
 				52,
 				new DummyClassInDeeperSubPackage(),
-				new Patere(true, DUMMY_CUSTOM_TEST_RESOURCES_PATH + File.separator),
+				new Patere(true, DUMMY_CUSTOM_TEST_RESOURCES_PATH + SEPARATOR),
 				new String[] {DUMMY_CUSTOM_TEST_RESOURCES_PATH, 
 						"dummypackage.dummysubpackage.dummysubpackage",
 						"DummyClassInDeeperSubPackage", "getResourcesPathForMethod" }
@@ -230,7 +233,7 @@ public class PatereTest {
 			  //+ removing file separator from custom base path
 				80,
 				new DummyClassInTopPackage(),
-				new Patere(false, DUMMY_CUSTOM_TEST_RESOURCES_PATH + File.separator),
+				new Patere(false, DUMMY_CUSTOM_TEST_RESOURCES_PATH + SEPARATOR),
 				new String[] { DUMMY_CUSTOM_TEST_RESOURCES_PATH, "dummypackage",
 						"DummyClassInTopPackage", "getResourcesPathForMethod" } 
 			}, 
@@ -238,7 +241,7 @@ public class PatereTest {
 			  //+ removing file separator from custom base path
 				81,
 				new DummyClassInSubPackage(),
-				new Patere(false, DUMMY_CUSTOM_TEST_RESOURCES_PATH + File.separator),
+				new Patere(false, DUMMY_CUSTOM_TEST_RESOURCES_PATH + SEPARATOR),
 				new String[] {DUMMY_CUSTOM_TEST_RESOURCES_PATH, "dummypackage", "dummysubpackage",
 						"DummyClassInSubPackage", "getResourcesPathForMethod" }
 			},
@@ -246,7 +249,7 @@ public class PatereTest {
 			  //+ removing file separator from custom base path
 				82,
 				new DummyClassInDeeperSubPackage(),
-				new Patere(false, DUMMY_CUSTOM_TEST_RESOURCES_PATH + File.separator),
+				new Patere(false, DUMMY_CUSTOM_TEST_RESOURCES_PATH + SEPARATOR),
 				new String[] {DUMMY_CUSTOM_TEST_RESOURCES_PATH, "dummypackage", "dummysubpackage",
 					"dummysubpackage", "DummyClassInDeeperSubPackage", "getResourcesPathForMethod" }
 			},
@@ -332,7 +335,7 @@ public class PatereTest {
 		StringBuilder expectedPath = new StringBuilder();
 		for (String directory : directoriesArray) {
 			if (!StringUtils.isBlank(directory)) {
-				expectedPath.append(directory).append(File.separator);
+				expectedPath.append(directory).append(SEPARATOR);
 			}
 		}
 		return expectedPath.toString();
