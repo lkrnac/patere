@@ -1,6 +1,7 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>net.lkrnac.libs</groupId>
+	<groupId>net.lkrnac.lib</groupId>
 	<artifactId>patere</artifactId>
 	<version>0.2.4-SNAPSHOT</version>
 
@@ -10,8 +11,8 @@
 		<url>https://github.com/lkrnac/patere</url>
 		<connection>scm:git:git@github.com:lkrnac/patere.git</connection>
 		<developerConnection>scm:git:git@github.com:lkrnac/patere.git</developerConnection>
-	  <tag>HEAD</tag>
-  </scm>
+		<tag>HEAD</tag>
+	</scm>
 	<issueManagement>
 		<url>https://github.com/lkrnac/patere</url>
 	</issueManagement>
@@ -77,10 +78,10 @@
 
 		</plugins>
 
-		<!-- remove M2E warning complaining about usage of maven-enforcer-plugin 
-			in parent -->
 		<pluginManagement>
 			<plugins>
+				<!-- remove M2E warning complaining about usage of maven-enforcer-plugin 
+					in parent -->
 				<plugin>
 					<groupId>org.eclipse.m2e</groupId>
 					<artifactId>lifecycle-mapping</artifactId>
@@ -105,6 +106,8 @@
 						</lifecycleMappingMetadata>
 					</configuration>
 				</plugin>
+				
+				<!-- override version of GPG plugin to use new GPG signing features -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-gpg-plugin</artifactId>
