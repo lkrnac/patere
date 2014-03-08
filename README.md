@@ -5,6 +5,22 @@ Developer can just drop resources belonging to the test into directory of certai
 use Patere in test to build the test resources path.  
 
 It uses stack trace of current thread to build the path, **therefore it's not suitable for production**. 
+Uses Java 7.
+
+## Maven dependency
+```xml
+<dependency>
+	<groupId>net.lkrnac.lib</groupId>
+	<artifactId>patere</artifactId>
+	<version>${version}</version>
+	<scope>test</scope>
+</dependency>
+```
+Find version in GitHub releases tab.
+
+## API
+JavaDoc of current development branch:
+https://lkrnac.ci.cloudbees.com/job/patere/ws/target/site/apidocs/index.html
 
 ## Examples
 Call from <code>net.lkrnac.someapp.AppTest.testSomeMethod()</code> 
