@@ -3,4 +3,4 @@
  * 
  * @author lubos krnac
  */
-package net.lkrnac.patere;
+package net.lkrnac.lib.patere;

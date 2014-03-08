@@ -1,4 +1,4 @@
-package net.lkrnac.patere;
+package net.lkrnac.lib.patere;
 
 import java.io.File;
 
@@ -28,14 +28,16 @@ public class Patere {
 	 * Creates Patere utility instance with default test resources path (that is
 	 * Maven default "src/test/resources") and uses flat package representation
 	 * (package is represented as one directory with dots -> e.g.
-	 * net.lkrnac.patere)
+	 * net.lkrnac.lib.patere)
 	 */
 	public Patere() {
 		this(true, DEFAULT_TEST_RESOURCES_PATH);
 	}
 
 	/**
-	 * Creates Patere utility instance with given base path.
+	 * Creates Patere utility instance with given base path. Uses flat package
+	 * representation (package is represented as one directory with dots -> e.g.
+	 * net.lkrnac.lib.patere)
 	 * 
 	 * @param baseTestResourcesPath
 	 *            custom base path for test resources
@@ -51,9 +53,9 @@ public class Patere {
 	 * @param flatPackageRepresentation
 	 *            <code>true</code> - flat package representation is used
 	 *            (package is one directory with dots -> e.g.
-	 *            net.lkrnac.patere); <code>false</code> - hierarchical package
-	 *            representation is used (package structure represented as
-	 *            various sub-directories -> e.g. net/lkrnac/patere)
+	 *            net.lkrnac.lib.patere); <code>false</code> - hierarchical
+	 *            package representation is used (package structure represented
+	 *            as various sub-directories -> e.g. net/lkrnac/lib/patere)
 	 * @param baseTestResourcesPath
 	 *            custom base path for test resources
 	 */
@@ -71,9 +73,9 @@ public class Patere {
 	 * @param flatPackageRepresentation
 	 *            <code>true</code> - flat package representation is used
 	 *            (package is one directory with dots -> e.g.
-	 *            net.lkrnac.patere); <code>false</code> - hierarchical package
-	 *            representation is used (package structure represented as
-	 *            various sub-directories -> e.g. net/lkrnac/patere)
+	 *            net.lkrnac.lib.patere); <code>false</code> - hierarchical
+	 *            package representation is used (package structure represented
+	 *            as various sub-directories -> e.g. net/lkrnac/lib/patere)
 	 */
 	public Patere(boolean flatPackageRepresentation) {
 		this(flatPackageRepresentation, DEFAULT_TEST_RESOURCES_PATH);

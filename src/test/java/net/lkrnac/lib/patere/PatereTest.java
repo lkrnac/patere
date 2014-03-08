@@ -1,5 +1,4 @@
-//SUPPRESS CHECKSTYLE JavadocPackage -5 adcsc
-package net.lkrnac.patere;
+package net.lkrnac.lib.patere;
 
 import java.io.File;
 

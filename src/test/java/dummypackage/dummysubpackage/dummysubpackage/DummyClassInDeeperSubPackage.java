@@ -1,8 +1,8 @@
 package dummypackage.dummysubpackage.dummysubpackage;
 
 //CHECKSTYLE:OFF
-import net.lkrnac.patere.Patere;
-import net.lkrnac.patere.PatereTest;
+import net.lkrnac.lib.patere.Patere;
+import net.lkrnac.lib.patere.PatereTest;
 import dummypackage.DummyClassInTopPackage;
 import dummypackage.DummyClassMarker;
 
